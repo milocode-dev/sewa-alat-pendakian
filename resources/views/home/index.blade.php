@@ -201,7 +201,6 @@
     <section class="py-5 bg-white" id="kategori" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-forest bg-opacity-10 text-forest rounded-pill px-3 py-2 mb-2">Kategori</span>
                 <h2 class="fw-bold">Pilih Alat Sesuai Kebutuhanmu</h2>
                 <p class="text-muted col-md-6 mx-auto">Koleksi lengkap peralatan pendakian, siap pakai kapan saja.</p>
             </div>
@@ -232,7 +231,6 @@
     <section class="py-5 bg-light" id="katalog" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-forest bg-opacity-10 text-forest rounded-pill px-3 py-2 mb-2">Katalog</span>
                 <h2 class="fw-bold">Produk Paling Diminati</h2>
                 <p class="text-muted col-md-6 mx-auto">Alat favorit para pendaki, kualitas terjamin.</p>
             </div>
@@ -276,41 +274,11 @@
         </div>
     </section>
 
-    {{-- TAMBAHAN BARU: KENAPA MEMILIH KAMI --}}
-    <section class="py-5 bg-white" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-forest bg-opacity-10 text-forest rounded-pill px-3 py-2 mb-2">Keunggulan</span>
-                <h2 class="fw-bold">Kenapa Memilih Kami</h2>
-            </div>
-            <div class="row g-4">
-                @foreach ([
-                    ['icon' => 'bi-shield-check', 'judul' => 'Alat Terjamin Bersih', 'desc' => 'Dicuci & disterilkan sebelum disewakan kembali.'],
-                    ['icon' => 'bi-cash-coin', 'judul' => 'Harga Bersahabat', 'desc' => 'Jauh lebih hemat dibanding beli alat baru.'],
-                    ['icon' => 'bi-truck', 'judul' => 'Antar-Jemput Mudah', 'desc' => 'Ambil di toko atau diantar ke lokasimu.'],
-                    ['icon' => 'bi-headset', 'judul' => 'CS Siap Membantu', 'desc' => 'Tim support responsif via WhatsApp.'],
-                    ['icon' => 'bi-tools', 'judul' => 'Alat Terawat', 'desc' => 'Kondisi dicek rutin sebelum digunakan.'],
-                    ['icon' => 'bi-geo-alt', 'judul' => 'Lokasi Strategis', 'desc' => 'Dekat basecamp pendakian populer.'],
-                ] as $i => $item)
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $i * 50 }}">
-                        <div class="p-3 rounded-4 hover-lift h-100">
-                            <div class="icon-circle bg-forest bg-opacity-10 text-forest rounded-3 fs-4 mb-3">
-                                <i class="bi {{ $item['icon'] }}"></i>
-                            </div>
-                            <h6 class="fw-bold">{{ $item['judul'] }}</h6>
-                            <p class="small text-muted mb-0">{{ $item['desc'] }}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
 
     {{-- TAMBAHAN BARU: CARA MENYEWA — timeline pakai grid Bootstrap --}}
     <section class="py-5 bg-light" id="cara-sewa" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-forest bg-opacity-10 text-forest rounded-pill px-3 py-2 mb-2">Panduan</span>
                 <h2 class="fw-bold">Cara Menyewa</h2>
                 <p class="text-muted col-md-6 mx-auto">Hanya 4 langkah mudah, alat siap kamu bawa mendaki.</p>
             </div>
@@ -338,14 +306,13 @@
     <section class="py-5 bg-light" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-forest bg-opacity-10 text-forest rounded-pill px-3 py-2 mb-2">Testimoni</span>
                 <h2 class="fw-bold">Kata Mereka yang Sudah Mendaki</h2>
             </div>
             <div class="row g-4">
                 @foreach ([
                     ['nama' => 'Rizky Ananda', 'label' => 'Pendaki Semeru', 'img' => 12, 'text' => 'Alatnya bersih banget dan lengkap, proses sewa cepat. Bakal sewa lagi.'],
                     ['nama' => 'Dinda Puspita', 'label' => 'Pendaki Rinjani', 'img' => 32, 'text' => 'Harga sewa jauh lebih murah dibanding beli baru. Kualitas masih layak pakai.'],
-                    ['nama' => 'Fajar Nugroho', 'label' => 'Pendaki Prau', 'img' => 45, 'text' => 'CS-nya ramah dan fast respon, alat diantar tepat waktu. Recommended!'],
+                    ['nama' => 'Fajar Nugroho', 'label' => 'Pendaki Prau', 'img' => 45, 'text' => 'Kemaren Aku Pesen Jasanya Bagus Banget Cuy!'],
                 ] as $i => $testi)
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $i * 50 }}">
                         <div class="card border-0 shadow-sm rounded-4 p-4 h-100 hover-lift">
@@ -371,7 +338,6 @@
     <section class="py-5 bg-white" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-forest bg-opacity-10 text-forest rounded-pill px-3 py-2 mb-2">Galeri</span>
                 <h2 class="fw-bold">Momen Para Pendaki</h2>
             </div>
             <div class="row g-3">
@@ -395,7 +361,6 @@
     <section class="py-5 bg-light" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="badge bg-forest bg-opacity-10 text-forest rounded-pill px-3 py-2 mb-2">FAQ</span>
                 <h2 class="fw-bold">Pertanyaan yang Sering Diajukan</h2>
             </div>
             <div class="row justify-content-center">
@@ -436,7 +401,7 @@
         </div>
     </section>
 
-   
+
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
