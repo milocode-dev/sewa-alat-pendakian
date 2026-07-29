@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.auth')
 
 @section('title', 'Login Admin')
 
@@ -36,7 +36,7 @@
             <input type="password" id="password" name="password" required class="border w-full bg-gray-100 border-gray-500 p-1.5 rounded-sm">
         </div>
 
-        <button type="submit" class="rounded-md p-2 bg-blue-600 text-white border border-blue-800 hover:bg-blue-700">Register</button>
+        <button type="submit" class="rounded-md p-2 bg-gray-900 text-white border border-blue-800 hover:bg-gray-700 w-full">Register</button>
     </form>
 
 @endsection

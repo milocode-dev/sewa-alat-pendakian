@@ -24,7 +24,7 @@
                     Dashboard
                 </a>
 
-                <a href="{{ route('admin.alat.index') }}"
+                <a href="{{ route('admin.items.index') }}"
                    class="block px-3 py-2 rounded text-sm font-medium
                           {{ request()->routeIs('admin.alat.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
                     Kelola Alat

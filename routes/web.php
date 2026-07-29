@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AlatController;
+use App\Http\Controllers\Admin\ItemController;
 
 Route::get('/', function () {
     return view('home.index');
@@ -27,5 +27,5 @@ Route::middleware('auth')->group(function () {
 // Admin only
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::resource('alat', AlatController::class);
+    Route::resource('items', ItemController::class);
 });
