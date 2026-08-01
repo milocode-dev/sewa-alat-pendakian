@@ -31,9 +31,14 @@
             <input type="email" id="email" name="email" required class="border w-full bg-gray-100 border-gray-500 p-1.5 rounded-sm">
         </div>
 
-        <div class="mb-6">
+        <div class="mb-2">
             <label for="password" class="block font-bold">Password</label>
             <input type="password" id="password" name="password" required class="border w-full bg-gray-100 border-gray-500 p-1.5 rounded-sm">
+        </div>
+
+        <div class="mb-6 flex gap-2">
+            <p class="text-slate-500">Sudah punya akun?</p>
+            <a href="{{ route('login') }}" class="text-blue-500 hover:underline hover:text-blue-700">Login</a>
         </div>
 
         <button type="submit" class="rounded-md p-2 bg-gray-900 text-white border border-blue-800 hover:bg-gray-700 w-full">Register</button>
