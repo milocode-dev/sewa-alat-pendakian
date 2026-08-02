@@ -1,58 +1,57 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🏔️ Sistem Informasi Sewa Alat Pendakian
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Node.js Version](https://img.shields.io/badge/node->=%2020.0.0-brightgreen.svg)](https://nodejs.org/)
+[![Vite](https://img.shields.io/badge/vite-%5E5.0.0-646CFF.svg)](https://vitejs.dev/)
+[![Laravel](https://img.shields.io/badge/laravel-%5E10.0-FF2D20.svg)](https://laravel.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## About Laravel
+Aplikasi berbasis web modern untuk memudahkan pendaki meminjam/menyewa peralatan outdoor (tenda, carrier, sepatu, alat masak, dll) serta membantu pengelola toko outdoor dalam memanajemen inventaris dan transaksi persewaan secara real-time.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📸 Tampilan Aplikasi
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+| Halaman Utama (Katalog) | Detail Produk & Booking |
+| :---: | :---: |
+| *(Tampilkan Screenshot)* | *(Tampilkan Screenshot)* |
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Fitur Utama
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🛒 Untuk Pelanggan (Pendaki)
+* **Katalog Peralatan Interactive:** Pencarian cepat dan filter alat berdasarkan kategori (Tenda, Carrier, Safety, dll).
+* **Cek Ketersediaan Real-Time:** Menghindari bentrok tanggal sewa antar pelanggan.
+* **Sistem Keranjang & Booking:** Proses pemesanan alat outdoor secara online dengan cepat.
+* **Riwayat Transaksi:** Memantau status penyewaan (Pending, Disetujui, Sedang Dipinjam, Selesai).
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 🛠️ Untuk Pengelola (Admin)
+* **Manajemen Inventaris (CRUD):** Tambah, ubah, dan hapus stok peralatan beserta kondisinya.
+* **Verifikasi Transaksi:** Konfirmasi pembayaran dan persetujuan sewa.
+* **Manajemen Pengembalian:** Catat tanggal pengembalian dan perhitungan denda (jika ada keterlambatan/kerusakan).
+* **Laporan Keuangan:** Ringkasan pendapatan dan statistik alat yang paling sering disewa.
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 🚀 Tech Stack
 
+- **Frontend:** React / Vue / Blade *(Sesuaikan dengan yang digunakan)* + Tailwind CSS
+- **Bundler:** Vite & Rolldown
+- **Backend:** Laravel / Node.js *(Sesuaikan)*
+- **Database:** MySQL (via Laragon / XAMPP)
+- **Tooling:** NPM, Git
+
+---
+
+## ⚙️ Panduan Instalasi & Jalankan Proyek
+
+Pastikan perangkat Anda sudah terinstal:
+* [Node.js](https://nodejs.org/) (Versi **v20.x** atau lebih baru)
+* [PHP](https://www.php.net/) (Versi >= 8.1)
+* [Composer](https://getcomposer.org/)
+* Server Lokal (Laragon / XAMPP)
+
+### 1. Clone Repositori
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+git clone [https://github.com/username-anda/sewa-alat-pendakian.git](https://github.com/username-anda/sewa-alat-pendakian.git)
+cd sewa-alat-pendakian
