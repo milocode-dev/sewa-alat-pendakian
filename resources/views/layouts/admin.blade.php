@@ -30,6 +30,12 @@
                     Kelola Alat
                 </a>
 
+                <a href="{{ route('admin.categories.index') }}"
+                    class="block px-3 py-2 rounded text-sm font-medium
+                            {{ request()->routeIs('admin.alat.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
+                    Kelola Kategori
+                </a>
+
                 {{-- Tambah menu lain di sini, misal Kelola Sewa/Transaksi --}}
             </nav>
 
