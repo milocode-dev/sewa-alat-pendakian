@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('home.index');
 });
 
+Route::get('/katalog', function () {
+    return view('katalog.index');
+});
+
 Route::middleware(['auth', 'admin'])->get('/test-admin', fn() => 'Berhasil masuk sebagai admin!');
 
 // Guest only (belum login)

@@ -66,7 +66,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-lg-center gap-1 mt-3 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#"><i class="bi bi-house-door me-1"></i> Home</a>
+                    <a class="nav-link active" href=" "><i class="bi bi-house-door me-1"></i> Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="bi bi-grid me-1"></i> Katalog Alat</a>

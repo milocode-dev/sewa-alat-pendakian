@@ -128,7 +128,7 @@
         <div class="div1 grid-card" data-aos="fade-in">
 
             <!-- TAMBAHAN BARU: Floating badge & rating, pakai class Bootstrap (position-absolute, rounded-pill, bg-white, shadow) -->
-            <span class="position-absolute top-0 end-0 m-3 badge bg-white text-dark rounded-pill px-3 py-2 shadow hero-badge-float">
+            <span class="position-absolute top-0  m-3 badge bg-white text-dark rounded-pill px-3 py-2 shadow hero-badge-float">
                 <i class="bi bi-shield-check text-success me-1"></i>100% Alat Bersih & Terawat
             </span>
 
@@ -195,9 +195,9 @@
 
     </div>
     
-    {{-- Kode Yang Baru --}}
 
-    {{-- TAMBAHAN BARU: KATEGORI ALAT — card Bootstrap + hover-lift --}}
+    {{-- Kode Yang Baru --}}
+    {{-- TAMPILAN KATEGORI --}}
     <section class="py-5 bg-white" id="kategori" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
@@ -206,10 +206,10 @@
             </div>
             <div class="row g-4">
                 @foreach ([
-                    ['icon' => 'bi-house-door', 'nama' => 'Tenda', 'jumlah' => 24],
-                    ['icon' => 'bi-backpack', 'nama' => 'Carrier', 'jumlah' => 18],
-                    ['icon' => 'bi-fire', 'nama' => 'Alat Masak', 'jumlah' => 15],
-                    ['icon' => 'bi-lightbulb', 'nama' => 'Lighting', 'jumlah' => 10],
+                    ['icon' => 'bi-house-door', 'nama' => 'Tenda', 'jumlah' => 240],
+                    ['icon' => 'bi-backpack', 'nama' => 'Carrier', 'jumlah' => 180],
+                    ['icon' => 'bi-fire', 'nama' => 'Alat Masak', 'jumlah' => 150],
+                    ['icon' => 'bi-lightbulb', 'nama' => 'Lighting', 'jumlah' => 100],
                 ] as $i => $kat)
                     <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="{{ $i * 50 }}">
                         <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100 hover-lift">
@@ -227,7 +227,7 @@
         </div>
     </section>
 
-    {{-- TAMBAHAN BARU: PRODUK POPULER — card Bootstrap standar --}}
+    {{-- TAMPILAN PRODUK BEST SELLER --}}
     <section class="py-5 bg-light" id="katalog" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
@@ -248,8 +248,8 @@
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $i * 50 }}">
                         <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
                             <div class="position-relative rounded-top-4 hover-zoom-img" style="height:220px; overflow:hidden;">
-                                <span class="position-absolute top-0 start-0 m-2 badge bg-forest-dark rounded-pill">{{ $produk['kategori'] }}</span>
-                                <span class="position-absolute top-0 end-0 m-2 badge bg-white text-forest rounded-pill">
+                                <span class="position-absolute top-0  m-2 badge bg-forest-dark rounded-pill">{{ $produk['kategori'] }}</span>
+                                <span class="position-absolute top-0  m-2 badge bg-white text-forest rounded-pill">
                                     <i class="bi bi-check-circle-fill text-success me-1"></i>Tersedia
                                 </span>
                                 <img src="{{ $produk['img'] }}" class="w-100 h-100 rounded-top-4" style="object-fit:cover;" alt="{{ $produk['nama'] }}">
@@ -275,7 +275,7 @@
     </section>
 
 
-    {{-- TAMBAHAN BARU: CARA MENYEWA — timeline pakai grid Bootstrap --}}
+    {{-- ALUR PENYEWAAN --}}
     <section class="py-5 bg-light" id="cara-sewa" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
@@ -302,7 +302,7 @@
     </section>
 
 
-    {{-- TAMBAHAN BARU: TESTIMONI --}}
+    {{-- KOMENTAR PELANGGAN --}}
     <section class="py-5 bg-light" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
@@ -312,7 +312,7 @@
                 @foreach ([
                     ['nama' => 'Rizky Ananda', 'label' => 'Pendaki Semeru', 'img' => 12, 'text' => 'Alatnya bersih banget dan lengkap, proses sewa cepat. Bakal sewa lagi.'],
                     ['nama' => 'Dinda Puspita', 'label' => 'Pendaki Rinjani', 'img' => 32, 'text' => 'Harga sewa jauh lebih murah dibanding beli baru. Kualitas masih layak pakai.'],
-                    ['nama' => 'Fajar Nugroho', 'label' => 'Pendaki Prau', 'img' => 45, 'text' => 'Kemaren Aku Pesen Jasanya Bagus Banget Cuy!'],
+                    ['nama' => 'Fajar Nugroho', 'label' => 'Pendaki Prau', 'img' => 45, 'text' => 'Kemaren Aku Pesen Jasanya Bagus Banget '],
                 ] as $i => $testi)
                     <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $i * 50 }}">
                         <div class="card border-0 shadow-sm rounded-4 p-4 h-100 hover-lift">
@@ -334,7 +334,7 @@
         </div>
     </section>
 
-    {{-- TAMBAHAN BARU: GALERI --}}
+    {{-- GALERI MOMEN PENDAKI --}}
     <section class="py-5 bg-white" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
@@ -357,7 +357,7 @@
         </div>
     </section>
 
-    {{-- TAMBAHAN BARU: FAQ — accordion Bootstrap murni --}}
+    {{-- DROPDOWN JAWABAN PERTANYAAN --}}
     <section class="py-5 bg-light" data-aos="fade-up">
         <div class="container">
             <div class="text-center mb-5">
@@ -389,7 +389,7 @@
         </div>
     </section>
 
-    {{-- TAMBAHAN BARU: CTA BESAR --}}
+    {{-- KONTEN TANYA --}}
     <section class="py-5 bg-white" data-aos="fade-up">
         <div class="container">
             <div class="rounded-4 p-5 text-center text-white position-relative"
