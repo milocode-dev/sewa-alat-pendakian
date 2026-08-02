@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('home.index');
 });
 
+Route::get('/katalog', function () {
+    return view('katalog.index');
+});
+
 Route::middleware(['auth', 'admin'])->get('/test-admin', fn() => 'Berhasil masuk sebagai admin!');
 
 // Guest only (belum login)
@@ -29,3 +33,4 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('items', ItemController::class);
 });
+
