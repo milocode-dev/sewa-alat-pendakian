@@ -12,6 +12,6 @@ class KatalogController extends Controller
         // Ambil semua produk dari database
         $produkPopuler = Produk::all();
 
-        return view('katalog', compact('produkPopuler'));
+        return view('katalog.index', compact('produkPopuler'));
     }
 }

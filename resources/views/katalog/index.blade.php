@@ -29,96 +29,69 @@
             </div>
 
             <div class="row g-4">
-                @php
-                    $produkPopuler = [
-                        [
-                            'nama' => 'Tenda Dome 4P',
-                            'kategori' => 'Tenda',
-                            'harga' => '35.000',
-                            'rating' => '4.9',
-                            'stok' => 5, // Tambahan field stok
-                            'img' => 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=500&q=80',
-                        ],
-                        [
-                            'nama' => 'Carrier 60L',
-                            'kategori' => 'Carrier',
-                            'harga' => '25.000',
-                            'rating' => '4.8',
-                            'stok' => 2, // Tambahan field stok
-                            'img' => 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=500&q=80',
-                        ],
-                        [
-                            'nama' => 'Kompor Portable',
-                            'kategori' => 'Masak',
-                            'harga' => '15.000',
-                            'rating' => '4.7',
-                            'stok' => 0, // Contoh jika stok habis
-                            'img' => 'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=500&q=80',
-                        ],
-                        [
-                            'nama' => 'Sleeping Bag',
-                            'kategori' => 'Tidur',
-                            'harga' => '20.000',
-                            'rating' => '4.9',
-                            'stok' => 8, // Tambahan field stok
-                            'img' => 'https://images.unsplash.com/photo-1445307806294-bff7f67ff225?auto=format&fit=crop&w=500&q=80',
-                        ],
-                    ];
-                @endphp
-
-                @foreach ($produkPopuler as $i => $produk)
+                @forelse ($items as $i => $item)
                     <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
                         <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
                             <div class="position-relative rounded-top-4" style="height:220px; overflow:hidden;">
-                                <!-- Badge Kategori di Pojok Kiri -->
-                                <span class="position-absolute top-0 start-0 m-2 badge bg-dark rounded-pill">{{ $produk['kategori'] }}</span>
-                                
-                                <!-- Dynamic Badge Status di Pojok Kanan -->
-                                @if($produk['stok'] > 0)
-                                    <span class="position-absolute top-0 end-0 m-2 badge bg-white text-dark rounded-pill shadow-sm">
+                                <span class="position-absolute top-0 start-0 m-2 badge bg-dark rounded-pill">
+                                    {{ $item->category->category_id ?? '-' }}
+                                </span>
+
+                                @if ($item->stock > 0)
+                                    <span
+                                        class="position-absolute top-0 end-0 m-2 badge bg-white text-dark rounded-pill shadow-sm">
                                         <i class="bi bi-check-circle-fill text-success me-1"></i>Tersedia
                                     </span>
                                 @else
-                                    <span class="position-absolute top-0 end-0 m-2 badge bg-danger text-white rounded-pill shadow-sm">
+                                    <span
+                                        class="position-absolute top-0 end-0 m-2 badge bg-danger text-white rounded-pill shadow-sm">
                                         <i class="bi bi-x-circle-fill me-1"></i>Habis
                                     </span>
                                 @endif
 
-                                <img src="{{ $produk['img'] }}" class="w-100 h-100 rounded-top-4" style="object-fit:cover;" alt="{{ $produk['nama'] }}">
+                                <img src="{{ $item->image ? asset('storage/' . $item->image) : 'https://via.placeholder.com/500x300' }}"
+                                    class="w-100 h-100 rounded-top-4" style="object-fit:cover;"
+                                    alt="{{ $item->item_name }}">
                             </div>
 
                             <div class="card-body d-flex flex-column justify-content-between">
                                 <div>
-                                    <h6 class="fw-bold mb-1">{{ $produk['nama'] }}</h6>
-                                    
+                                    <h6 class="fw-bold mb-1">{{ $item->item_name }}</h6>
+
                                     <div class="d-flex align-items-center justify-content-between mb-2">
                                         <div class="d-flex align-items-center gap-1">
                                             <i class="bi bi-star-fill text-warning small"></i>
-                                            <small class="text-muted">{{ $produk['rating'] }} (120 sewa)</small>
+                                            <small class="text-muted">4.9 (120 sewa)</small>
                                         </div>
-
-                                        <!-- Penunjuk Sisa Stok -->
-                                        <small class="fw-semibold {{ $produk['stok'] > 0 ? 'text-secondary' : 'text-danger' }}">
-                                            Stok: {{ $produk['stok'] }}
+                                        <small
+                                            class="fw-semibold {{ $item->stock > 0 ? 'text-secondary' : 'text-danger' }}">
+                                            Stok: {{ $item->stock }}
                                         </small>
                                     </div>
                                 </div>
 
                                 <div class="d-flex align-items-center justify-content-between mt-2 pt-2 border-top">
                                     <div class="fw-bold text-success">
-                                        Rp{{ $produk['harga'] }} <small class="text-muted fw-normal">/hari</small>
+                                        Rp{{ number_format($item->price_per_day, 0, ',', '.') }} <small
+                                            class="text-muted fw-normal">/hari</small>
                                     </div>
-                                    
-                                    <!-- Button otomatis disable jika stok habis -->
-                                    <button class="btn btn-sm rounded-pill px-3 {{ $produk['stok'] > 0 ? 'btn-success' : 'btn-secondary' }}" 
-                                            {{ $produk['stok'] == 0 ? 'disabled' : '' }}>
-                                        {{ $produk['stok'] > 0 ? 'Sewa' : 'Habis' }}
-                                    </button>
+                                    @if ($item->stock > 0)
+                                        <a href="{{ route('transaction', $item->id) }}"
+                                            class="btn btn-sm rounded-pill px-3 btn-success">
+                                            Sewa
+                                        </a>
+                                    @else
+                                        <button class="btn btn-sm rounded-pill px-3 btn-secondary" disabled>
+                                            Habis
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <p class="text-center text-muted">Belum ada alat tersedia.</p>
+                @endforelse
             </div>
         </div>
     </section>

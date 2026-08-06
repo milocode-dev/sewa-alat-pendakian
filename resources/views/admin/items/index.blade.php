@@ -35,7 +35,7 @@
                 @forelse ($items as $item)
                     <tr class="hover:bg-gray-50">
                         <td class="px-6 py-3">
-                            <img src="{{ $item->image ? asset('storage/'.$item->image) : asset('images/no-image.png') }}"
+                            <img src="{{ $item->image ? asset('storage/public/'.$item->image) : asset('images/no-image.png') }}"
                                  alt="{{ $item->item_name }}"
                                  class="w-12 h-12 rounded-md object-cover border border-gray-200">
                         </td>

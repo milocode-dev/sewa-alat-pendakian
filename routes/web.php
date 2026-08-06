@@ -1,20 +1,29 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home.index');
-});
+})->name('home');
+
+Route::get('/about', function () {
+    return view('home.about');
+})->name('about');
+
+use App\Models\Item; // tambahkan import ini di bagian atas file
 
 Route::get('/katalog', function () {
-    return view('katalog.index');
-});
+    $items = Item::with('category')->get();
 
-Route::middleware(['auth', 'admin'])->get('/test-admin', fn() => 'Berhasil masuk sebagai admin!');
+    return view('katalog.index', compact('items'));
+})->name('katalog');
+
+Route::middleware(['auth', 'admin'])->get('/test-admin', fn () => 'Berhasil masuk sebagai admin!');
 
 // Guest only (belum login)
 Route::middleware('guest')->group(function () {
@@ -36,3 +45,23 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('categories', CategoryController::class);
 });
 
+// Transaksi only
+
+Route::get('/transaction', [TransactionController::class, 'create'])
+    ->name('transaction');
+Route::middleware('auth')->group(function () {
+
+    Route::get('/booking', [TransactionController::class, 'create'])
+        ->name('transaction');
+
+    Route::post('/booking', [TransactionController::class, 'store'])
+        ->name('transaction.store');
+
+});
+
+Route::get('/admin/transactions', [TransactionController::class, 'index'])
+    ->name('admin.transaction.index');
+
+Route::get('/admin/transactions/{transaction}',
+    [TransactionController::class, 'show'])
+    ->name('admin.transaction.show');

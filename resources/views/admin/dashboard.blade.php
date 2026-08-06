@@ -4,4 +4,4 @@
 
 @section('content')
 <p>Hai</p>
-@endsection
+@endsection  
