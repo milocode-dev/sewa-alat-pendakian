@@ -35,11 +35,6 @@
                             {{ request()->routeIs('admin.alat.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
                     Kelola Kategori
                 </a>
-                <a href="{{ route('home') }}"
-                    class="block px-3 py-2 rounded text-sm font-medium
-                            {{ request()->routeIs('admin.alat.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
-                    Kembali ke Website
-                </a>
 
                 {{-- Tambah menu lain di sini, misal Kelola Sewa/Transaksi --}}
             </nav>
@@ -52,6 +47,10 @@
                         Logout
                     </button>
                 </form>
+
+                <a href="{{ route('home') }}" class="w-full text-left px-3 py-2 rounded text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white">
+                    Kembali Ke Home Page
+                </a>
             </div>
         </aside>
 
