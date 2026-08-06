@@ -377,37 +377,38 @@
         </div>
     </section>
 
-
-    {{-- KOMENTAR PELANGGAN --}}
-    <section class="py-5 bg-light" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Kata Mereka yang Sudah Mendaki</h2>
-            </div>
-            <div class="row g-4">
-                @foreach ([['nama' => 'Rizky Ananda', 'label' => 'Pendaki Semeru', 'img' => 12, 'text' => 'Alatnya bersih banget dan lengkap, proses sewa cepat. Bakal sewa lagi.'], ['nama' => 'Dinda Puspita', 'label' => 'Pendaki Rinjani', 'img' => 32, 'text' => 'Harga sewa jauh lebih murah dibanding beli baru. Kualitas masih layak pakai.'], ['nama' => 'Fajar Nugroho', 'label' => 'Pendaki Prau', 'img' => 45, 'text' => 'Kemaren Aku Pesen Jasanya Bagus Banget ']] as $i => $testi)
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $i * 50 }}">
-                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 hover-lift">
-                            <div class="text-warning mb-2 small">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i>
-                            </div>
-                            <p class="small text-muted">"{{ $testi['text'] }}"</p>
-                            <div class="d-flex align-items-center gap-2 mt-2">
-                                <img src="https://i.pravatar.cc/48?img={{ $testi['img'] }}" class="rounded-circle"
-                                    width="44" height="44" alt="{{ $testi['nama'] }}">
-                                <div>
-                                    <h6 class="fw-bold mb-0 small">{{ $testi['nama'] }}</h6>
-                                    <small class="text-muted">{{ $testi['label'] }}</small>
-                                </div>
+{{-- KOMENTAR PELANGGAN --}}
+<section class="py-5 bg-light" data-aos="fade-up">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Kata Mereka yang Sudah Mendaki</h2>
+        </div>
+        <div class="row g-4">
+            @forelse ($testimonials as $testimonial)
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 50 }}">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100 hover-lift">
+                        <div class="text-warning mb-2 small">
+                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="small text-muted">"{{ $testimonial->message }}"</p>
+                        <div class="d-flex align-items-center gap-2 mt-2">
+                            <img src="https://ui-avatars.com/api/?name={{ urlencode($testimonial->user->name) }}"
+                                 class="rounded-circle" width="44" height="44" alt="{{ $testimonial->user->name }}">
+                            <div>
+                                <h6 class="fw-bold mb-0 small">{{ $testimonial->user->name }}</h6>
+                                <small class="text-muted">{{ $testimonial->created_at->diffForHumans() }}</small>
                             </div>
                         </div>
                     </div>
-                @endforeach
-            </div>
+                </div>
+            @empty
+                <div class="col-12 text-center text-muted">
+                    Belum ada testimoni. Jadi yang pertama berbagi pengalaman!
+                </div>
+            @endforelse
         </div>
-    </section>
+    </div>
+</section>
 
     {{-- GALERI MOMEN PENDAKI --}}
     <section class="py-5 bg-white" data-aos="fade-up">
