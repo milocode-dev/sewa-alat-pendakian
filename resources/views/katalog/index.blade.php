@@ -34,7 +34,7 @@
                         <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
                             <div class="position-relative rounded-top-4" style="height:220px; overflow:hidden;">
                                 <span class="position-absolute top-0 start-0 m-2 badge bg-dark rounded-pill">
-                                    {{ $item->category->category_id ?? '-' }}
+                                    {{ $item->category->category_name ?? '-' }}
                                 </span>
 
                                 @if ($item->stock > 0)

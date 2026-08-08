@@ -7,7 +7,7 @@
     <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
         <div>
             <h3 class="font-semibold text-gray-800">Detail Alat</h3>
-            <p class="text-sm text-gray-500">Informasi lengkap "{{ $item->nama }}"</p>
+            <p class="text-sm text-gray-500">Informasi lengkap "{{ $item->item_name }}"</p>
         </div>
         <a href="{{ route('admin.items.index') }}"
            class="text-sm font-medium px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50">
@@ -19,7 +19,7 @@
         {{-- Gambar --}}
         <div class="col-span-1">
             <img src="{{ $item->image ? asset('storage/'.$item->image) : asset('images/no-image.png') }}"
-                 alt="{{ $item->nama }}"
+                alt="{{ $item->item_name }}"
                  class="w-full aspect-square object-cover rounded-lg border border-gray-200">
         </div>
 

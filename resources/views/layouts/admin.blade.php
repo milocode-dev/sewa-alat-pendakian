@@ -26,15 +26,27 @@
 
                 <a href="{{ route('admin.items.index') }}"
                    class="block px-3 py-2 rounded text-sm font-medium
-                          {{ request()->routeIs('admin.alat.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
+                          {{ request()->routeIs('admin.items.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
                     Kelola Alat
                 </a>
 
                 <a href="{{ route('admin.categories.index') }}"
                     class="block px-3 py-2 rounded text-sm font-medium
-                            {{ request()->routeIs('admin.alat.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
+                            {{ request()->routeIs('admin.categories.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
                     Kelola Kategori
                 </a>
+
+                <a href="{{ route('admin.testimonials.index') }}"
+                    class="block px-3 py-2 rounded text-sm font-medium
+                            {{ request()->routeIs('admin.testimonials.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
+                        Testimoni
+                    </a>
+
+                    <a href="{{ route('admin.transactions.index') }}"
+                    class="block px-3 py-2 rounded text-sm font-medium
+                            {{ request()->routeIs('admin.transactions.*') ? 'bg-gray-800 text-white' : 'text-gray-300 hover:bg-gray-800 hover:text-white' }}">
+                        Transaksi
+                    </a>
 
                 {{-- Tambah menu lain di sini, misal Kelola Sewa/Transaksi --}}
             </nav>

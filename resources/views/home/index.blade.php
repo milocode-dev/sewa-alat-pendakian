@@ -405,10 +405,55 @@
                 <div class="col-12 text-center text-muted">
                     Belum ada testimoni. Jadi yang pertama berbagi pengalaman!
                 </div>
-            @endforelse
-        </div>
-    </div>
-</section>
+        @endforelse
+                </div>
+
+                {{-- FORM SUBMIT TESTIMONI --}}
+                <div class="row justify-content-center mt-5" data-aos="fade-up">
+                    <div class="col-lg-6">
+
+                        @if (session('success'))
+                            <div class="alert alert-success rounded-3 text-center small">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger rounded-3 text-center small">
+                                {{ $errors->first() }}
+                            </div>
+                        @endif
+
+                        @auth
+                            <div class="card border-0 shadow-sm rounded-4 p-4">
+                                <h6 class="fw-bold mb-3 text-center">Bagikan Pengalamanmu</h6>
+                                <form action="{{ route('testimonials.store') }}" method="POST">
+                                    @csrf
+                                    <textarea name="message" rows="3" maxlength="255"
+                                            class="form-control rounded-3 mb-3"
+                                            placeholder="Ceritain pengalaman kamu sewa alat di sini...">{{ old('message') }}</textarea>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-success rounded-pill px-4">
+                                            Kirim Testimoni
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        @else
+                            <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
+                                <p class="text-muted mb-3">Yuk, login dulu buat bagikan pengalaman mendakimu.</p>
+                                <a href="{{ route('login') }}" class="btn btn-outline-success rounded-pill px-4 mx-auto"
+                                style="width: fit-content;">
+                                    Login Sekarang
+                                </a>
+                            </div>
+                        @endauth
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
     {{-- GALERI MOMEN PENDAKI --}}
     <section class="py-5 bg-white" data-aos="fade-up">

@@ -8,7 +8,7 @@ use App\Models\Testimonial;
 class HomeController extends Controller
 {
     public function index() {
-        $testimonials = Testimonial::where('status',  '=', 'approved')->with('user')->latest()->take(6)->get();
+        $testimonials = Testimonial::where('status',  '=', 'Approved')->with('user')->latest()->take(6)->get();
 
         return view('home.index', compact('testimonials'));
     }
