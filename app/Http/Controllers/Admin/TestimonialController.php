@@ -8,25 +8,42 @@ use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
 {
-    public function index() {
+    public function index()
+    {
+        // 1. Ambil data testimoni status Pending
+        $testimonials = Testimonial::where('status', 'Pending')
+            ->with('user')
+            ->latest()
+            ->get();
 
-        $testimonials = Testimonial::where('status', '=', 'Pending')->with('user')->get();
+        // 2. Ambil data testimoni status Approved (menggunakan snake_case)
+        $approved_testimonials = Testimonial::where('status', 'Approved')
+            ->with('user')
+            ->latest()
+            ->get();
 
-        return view('admin.testimonials.index', compact('testimonials'));
+        // 3. Kirim KEDUA variabel ke view Blade
+        return view('admin.testimonials.index', compact('testimonials', 'approved_testimonials'));
     }
 
-    public function approve(Testimonial $testimonial) {
-        
+    public function approve(Testimonial $testimonial)
+    {
         $testimonial->update(['status' => 'Approved']);
 
-        return redirect()->route('admin.testimonials.index')->with('success', 'Data berhasil di approve');
+        return redirect()->route('admin.testimonials.index')->with('success', 'Data berhasil di-approve');
     }
 
-    public function reject(Testimonial $testimonial) {
-
-
+    public function reject(Testimonial $testimonial)
+    {
         $testimonial->update(['status' => 'Rejected']);
 
-        return redirect()->route('admin.testimonials.index')->with('success', 'Data berhasil di reject');
+        return redirect()->route('admin.testimonials.index')->with('success', 'Data berhasil di-reject');
+    }
+
+    public function destroy(Testimonial $testimonial)
+    {
+        $testimonial->delete();
+
+        return redirect()->route('admin.testimonials.index')->with('success', 'Testimoni berhasil dihapus');
     }
 }

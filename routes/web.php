@@ -45,9 +45,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('items', ItemController::class);
     Route::resource('categories', CategoryController::class);
 
+    // Testimoni Admin
     Route::get('/testimonials', [AdminTestimonialController::class, 'index'])->name('testimonials.index');
     Route::patch('/testimonials/{testimonial}/approve', [AdminTestimonialController::class, 'approve'])->name('testimonials.approve');
     Route::patch('/testimonials/{testimonial}/reject', [AdminTestimonialController::class, 'reject'])->name('testimonials.reject');
+    
+    // PERBAIKAN DI BARIS INI:
+    Route::delete('/testimonials/{testimonial}', [AdminTestimonialController::class, 'destroy'])->name('testimonials.destroy');
 
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
     Route::get('/transactions/{transaction}', [TransactionController::class, 'show'])->name('transactions.show');

@@ -1,15 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- CDN Bootstrap Icons (Disarankan ditaruh di file layouts/app.blade.php di dalam tag <head>) -->
+    <!-- CDN Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- TAMBAHAN BARU: Font Poppins + AOS (animasi ringan) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Poppins + AOS Animation -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Tag CSS/Style -->
     <style>
+        /* Styling Star Rating Interactive */
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating label {
+            cursor: pointer;
+            color: #e4e5e9;
+            /* Warna bintang saat belum dipilih (Abu-abu) */
+            transition: color 0.2s ease-in-out;
+        }
+
+        /* Saat di-hover atau dipilih, ubah bintang dan bintang di kirinya menjadi kuning */
+        .star-rating label:hover,
+        .star-rating label:hover~label,
+        .star-rating input[type="radio"]:checked~label {
+            color: #ffc107;
+            /* Warna kuning Bootstrap warning */
+        }
+
         .parent {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -81,9 +102,9 @@
         }
 
         /* ============================================================
-                   TAMBAHAN BARU — minim, hanya untuk hal yang Bootstrap tak punya:
-                   hover-lift, garis timeline putus-putus, dan warna brand.
-                   ============================================================ */
+                                               TAMBAHAN BARU — minim, hanya untuk hal yang Bootstrap tak punya:
+                                               hover-lift, garis timeline putus-putus, dan warna brand.
+                                               ============================================================ */
         body {
             font-family: 'Poppins', sans-serif;
         }
@@ -208,7 +229,7 @@
         </div>
 
         <!-- DIV 2: KATEGORI TENDA -->
-        <div class="div2 grid-card text-center align-items-center">
+        <div class="div2 grid-card text-center align-items-center" data-aos="fade-up" data-aos-delay="100">
             <img width="48" height="48" src="https://img.icons8.com/ink/48/FFFFFF/tent-in-the-forest.png"
                 alt="Tenda Camping">
             <h5 class="fw-bold mb-1">Tenda Camping</h5>
@@ -218,7 +239,7 @@
         </div>
 
         <!-- DIV 3: KATEGORI CARRIER -->
-        <div class="div3 grid-card text-center align-items-center">
+        <div class="div3 grid-card text-center align-items-center" data-aos="fade-up" data-aos-delay="150">
             <i class="bi bi-backpack fs-1 mb-2"></i>
             <h5 class="fw-bold mb-1">Tas Carrier</h5>
             <p class="small text-light opacity-75 mb-0">
@@ -227,7 +248,7 @@
         </div>
 
         <!-- DIV 4: KATEGORI ALAT MASAK -->
-        <div class="div4 grid-card text-center align-items-center">
+        <div class="div4 grid-card text-center align-items-center" data-aos="fade-up" data-aos-delay="200">
             <i class="bi bi-fire fs-1 mb-2"></i>
             <h5 class="fw-bold mb-1">Alat Masak</h5>
             <p class="small text-light opacity-75 mb-0">
@@ -236,7 +257,7 @@
         </div>
 
         <!-- DIV 5: KATEGORI SLEEPING GEAR -->
-        <div class="div5 grid-card text-center align-items-center">
+        <div class="div5 grid-card text-center align-items-center" data-aos="fade-up" data-aos-delay="250">
             <i class="bi bi-moon-stars fs-1 mb-2"></i>
             <h5 class="fw-bold mb-1">Sleeping Gear</h5>
             <p class="small text-light opacity-75 mb-0">
@@ -244,16 +265,16 @@
             </p>
         </div>
 
-  
+
 
     </div>
 
 
     {{-- Kode Yang Baru --}}
     {{-- TAMPILAN KATEGORI --}}
-    <section class="py-5 bg-white" id="kategori" data-aos="fade-up">
+    <section class="py-5 bg-white" id="kategori" data-aos="fade-in">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">Pilih Alat Sesuai Kebutuhanmu</h2>
                 <p class="text-muted col-md-6 mx-auto">Koleksi lengkap peralatan pendakian, siap pakai kapan saja.</p>
             </div>
@@ -274,90 +295,96 @@
         </div>
     </section>
 
-    {{-- TAMPILAN PRODUK BEST SELLER --}}
-    <section class="py-5 bg-light" id="katalog" data-aos="fade-up">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Produk Paling Diminati</h2>
-                <p class="text-muted col-md-6 mx-auto">Alat favorit para pendaki, kualitas terjamin.</p>
-            </div>
-            <div class="row g-4">
-                @php
-                    $produkPopuler = [
-                        [
-                            'nama' => 'Tenda Dome 4P',
-                            'kategori' => 'Tenda',
-                            'harga' => '35.000',
-                            'rating' => '4.9',
-                            'img' =>
-                                'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=500&q=80',
-                        ],
-                        [
-                            'nama' => 'Carrier 60L',
-                            'kategori' => 'Carrier',
-                            'harga' => '25.000',
-                            'rating' => '4.8',
-                            'img' =>
-                                'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=500&q=80',
-                        ],
-                        [
-                            'nama' => 'Kompor Portable',
-                            'kategori' => 'Masak',
-                            'harga' => '15.000',
-                            'rating' => '4.7',
-                            'img' =>
-                                'https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&w=500&q=80',
-                        ],
-                        [
-                            'nama' => 'Sleeping Bag',
-                            'kategori' => 'Tidur',
-                            'harga' => '20.000',
-                            'rating' => '4.9',
-                            'img' =>
-                                'https://images.unsplash.com/photo-1445307806294-bff7f67ff225?auto=format&fit=crop&w=500&q=80',
-                        ],
-                    ];
-                @endphp
+    {{-- Section khusus best seller --}}
 
+
+    {{-- Section Produk Populer --}}
+    <section class="py-5 bg-light position-relative overflow-hidden">
+        <div class="container py-4">
+
+            {{-- Section Header --}}
+            <div class="row justify-content-center text-center mb-5" data-aos="fade-up">
+                <div class="col-lg-7">
+                    <span
+                        class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2 mb-2 fw-semibold">
+                        <i class="bi bi-fire me-1"></i> Paling Banyak Disewa
+                    </span>
+                    <h2 class="fw-extrabold display-6 text-gradient-forest mb-2">Produk Populer</h2>
+                    <p class="text-muted">Pilihan perlengkapan terbaik yang sering disewa oleh pelanggan kami.</p>
+                </div>
+            </div>
+
+            {{-- Grid Produk --}}
+            <div class="row g-4">
                 @foreach ($produkPopuler as $i => $produk)
-                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $i * 50 }}">
-                        <div class="card border-0 shadow-sm rounded-4 h-100 hover-lift">
-                            <div class="position-relative rounded-top-4 hover-zoom-img"
-                                style="height:220px; overflow:hidden;">
+                    <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
+                        <div class="card card-popular border-0 shadow-sm rounded-4 h-100 bg-white">
+
+                            {{-- Container Gambar --}}
+                            <div class="position-relative rounded-top-4 hover-zoom-img overflow-hidden"
+                                style="height:220px;">
+
+                                {{-- Badge Hot / Populer --}}
                                 <span
-                                    class="position-absolute top-0  m-2 badge bg-forest-dark rounded-pill">{{ $produk['kategori'] }}</span>
-                                {{-- <span class="position-absolute top-0  m-2 badge bg-white text-forest rounded-pill">
-                                    <i class="bi bi-check-circle-fill text-success me-1"></i>Tersedia
-                                </span> --}}
-                                <img src="{{ $produk['img'] }}" class="w-100 h-100 rounded-top-4" style="object-fit:cover;"
-                                    alt="{{ $produk['nama'] }}">
+                                    class="position-absolute top-0 start-0 m-3 badge bg-warning text-dark fw-bold rounded-pill shadow-sm badge-hot z-2">
+                                    🔥 Popular
+                                </span>
+
+                                {{-- Badge Kategori --}}
+                                <span
+                                    class="position-absolute top-0 end-0 m-3 badge bg-dark bg-opacity-75 backdrop-blur rounded-pill z-2">
+                                    {{ $produk->category->name ?? 'Umum' }}
+                                </span>
+
+                                {{-- Gambar --}}
+                                <img src="{{ asset('storage/' . $produk->image) }}" class="w-100 h-100 object-fit-cover"
+                                    alt="{{ $produk->item_name }}">
                             </div>
-                            <div class="card-body">
-                                <h6 class="fw-bold mb-1">{{ $produk['nama'] }}</h6>
-                                {{-- <div class="d-flex align-items-center gap-1 mb-2">
-                                    <i class="bi bi-star-fill text-warning small"></i>
-                                    <small class="text-muted">{{ $produk['rating'] }} (120 sewa)</small>
-                                </div> --}}
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="fw-bold text-forest-dark">
-                                        Rp{{ $produk['harga'] }} <small class="text-muted fw-normal">/hari</small>
+
+                            {{-- Card Body --}}
+                            <div class="card-body d-flex flex-column justify-content-between p-4">
+                                <div>
+                                    <h6 class="fw-bold text-dark mb-2 text-truncate" title="{{ $produk->item_name }}">
+                                        {{ $produk->item_name }}
+                                    </h6>
+                                </div>
+
+                                <div
+                                    class="d-flex align-items-center justify-content-between mt-3 pt-2 border-top border-light">
+                                    {{-- Harga --}}
+                                    <div>
+                                        <small class="text-muted d-block style="font-size: 0.75rem;">Mulai dari</small>
+                                        <span class="fw-bold text-success fs-6">
+                                            Rp{{ number_format($produk->price_per_day, 0, ',', '.') }}
+                                        </span>
+                                        <small class="text-muted fw-normal">/hari</small>
                                     </div>
-                                    <a class="btn btn-success btn-sm rounded-pill px-3"
-                                        href="{{ route('katalog') }}">Cari</a>
+
+                                    {{-- Tombol Sewa --}}
+                                    <a class="btn btn-success btn-pulse btn-sm rounded-pill px-3 fw-semibold shadow-sm"
+                                        href="{{ route('katalog') }}">
+                                        Sewa <i class="bi bi-arrow-right-short ms-1"></i>
+                                    </a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 @endforeach
             </div>
+
         </div>
     </section>
 
 
+
+
+
+
     {{-- ALUR PENYEWAAN --}}
-    <section class="py-5 bg-light" id="cara-sewa" data-aos="fade-up">
+    <section class="py-5 bg-light" id="cara-sewa" data-aos="fade-in">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">Cara Menyewa</h2>
                 <p class="text-muted col-md-6 mx-auto">Hanya 4 langkah mudah, alat siap kamu bawa mendaki.</p>
             </div>
@@ -377,88 +404,117 @@
         </div>
     </section>
 
-{{-- KOMENTAR PELANGGAN --}}
-<section class="py-5 bg-light" data-aos="fade-up">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="fw-bold">Kata Mereka yang Sudah Mendaki</h2>
-        </div>
-        <div class="row g-4">
-            @forelse ($testimonials as $testimonial)
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 50 }}">
-                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100 hover-lift">
-                        <div class="text-warning mb-2 small">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                        </div>
-                        <p class="small text-muted">"{{ $testimonial->message }}"</p>
-                        <div class="d-flex align-items-center gap-2 mt-2">
-                            <img src="https://ui-avatars.com/api/?name={{ urlencode($testimonial->user->name) }}"
-                                 class="rounded-circle" width="44" height="44" alt="{{ $testimonial->user->name }}">
-                            <div>
-                                <h6 class="fw-bold mb-0 small">{{ $testimonial->user->name }}</h6>
-                                <small class="text-muted">{{ $testimonial->created_at->diffForHumans() }}</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @empty
-                <div class="col-12 text-center text-muted">
-                    Belum ada testimoni. Jadi yang pertama berbagi pengalaman!
-                </div>
-        @endforelse
-                </div>
-
-                {{-- FORM SUBMIT TESTIMONI --}}
-                <div class="row justify-content-center mt-5" data-aos="fade-up">
-                    <div class="col-lg-6">
-
-                        @if (session('success'))
-                            <div class="alert alert-success rounded-3 text-center small">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
-                        @if ($errors->any())
-                            <div class="alert alert-danger rounded-3 text-center small">
-                                {{ $errors->first() }}
-                            </div>
-                        @endif
-
-                        @auth
-                            <div class="card border-0 shadow-sm rounded-4 p-4">
-                                <h6 class="fw-bold mb-3 text-center">Bagikan Pengalamanmu</h6>
-                                <form action="{{ route('testimonials.store') }}" method="POST">
-                                    @csrf
-                                    <textarea name="message" rows="3" maxlength="255"
-                                            class="form-control rounded-3 mb-3"
-                                            placeholder="Ceritain pengalaman kamu sewa alat di sini...">{{ old('message') }}</textarea>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-success rounded-pill px-4">
-                                            Kirim Testimoni
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        @else
-                            <div class="card border-0 shadow-sm rounded-4 p-4 text-center">
-                                <p class="text-muted mb-3">Yuk, login dulu buat bagikan pengalaman mendakimu.</p>
-                                <a href="{{ route('login') }}" class="btn btn-outline-success rounded-pill px-4 mx-auto"
-                                style="width: fit-content;">
-                                    Login Sekarang
-                                </a>
-                            </div>
-                        @endauth
-
-                    </div>
-                </div>
-
+    {{-- KOMENTAR PELANGGAN --}}
+    <section class="py-5 bg-light" data-aos="fade-in">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="fw-bold">Kata Mereka yang Sudah Mendaki</h2>
             </div>
-        </section>
+            <div class="row g-4">
+                @forelse ($testimonials as $testimonial)
+                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="{{ $loop->index * 50 }}">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100 hover-lift">
+                            {{-- DITAMPILKAN SECARA DINAMIS --}}
+                            <div class="text-warning mb-2 small">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <i class="bi bi-star{{ $i <= ($testimonial->rating ?? 5) ? '-fill' : '' }}"></i>
+                                @endfor
+                            </div>
+                            <p class="small text-muted">"{{ $testimonial->message }}"</p>
+                            <div class="d-flex align-items-center gap-2 mt-2">
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($testimonial->user->name) }}"
+                                    class="rounded-circle" width="44" height="44"
+                                    alt="{{ $testimonial->user->name }}">
+                                <div>
+                                    <h6 class="fw-bold mb-0 small">{{ $testimonial->user->name }}</h6>
+                                    <small class="text-muted">{{ $testimonial->created_at->diffForHumans() }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <div class="col-12 text-center text-muted">
+                        Belum ada testimoni. Jadi yang pertama berbagi pengalaman!
+                    </div>
+                @endforelse
+            </div>
+
+            {{-- FORM SUBMIT TESTIMONI --}}
+            <div class="row justify-content-center mt-5" data-aos="fade-up">
+                <div class="col-lg-6">
+
+                    @if (session('success'))
+                        <div class="alert alert-success rounded-3 text-center small">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger rounded-3 text-center small">
+                            {{ $errors->first() }}
+                        </div>
+                    @endif
+
+                    @auth
+                        <div class="card border-0 shadow-sm rounded-4 p-4" data-aos="zoom-in" data-aos-delay="100">
+                            <h6 class="fw-bold mb-3 text-center">Bagikan Pengalamanmu</h6>
+                            <form action="{{ route('testimonials.store') }}" method="POST"
+                                onsubmit="this.querySelector('button[type=submit]').disabled = true;">
+                                @csrf
+
+                                {{-- PILIHAN RATING BINTANG --}}
+                                <div class="mb-3 text-center">
+                                    <label class="form-label small text-muted d-block mb-1">Beri Rating:</label>
+                                    <div
+                                        class="star-rating d-inline-flex flex-row-reverse justify-content-center gap-1 fs-5 text-warning">
+                                        <input type="radio" id="star5" name="rating" value="5" required />
+                                        <label for="star5" title="5 Bintang"><i class="bi bi-star-fill"></i></label>
+
+                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <label for="star4" title="4 Bintang"><i class="bi bi-star-fill"></i></label>
+
+                                        <input type="radio" id="star3" name="rating" value="3" />
+                                        <label for="star3" title="3 Bintang"><i class="bi bi-star-fill"></i></label>
+
+                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <label for="star2" title="2 Bintang"><i class="bi bi-star-fill"></i></label>
+
+                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <label for="star1" title="1 Bintang"><i class="bi bi-star-fill"></i></label>
+                                    </div>
+                                </div>
+
+                                <textarea name="message" rows="3" maxlength="255" class="form-control rounded-3 mb-3"
+                                    placeholder="Ceritain pengalaman kamu sewa alat di sini..." required>{{ old('message') }}</textarea>
+
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success rounded-pill px-4">
+                                        Kirim Testimoni
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    @else
+                        <div class="card border-0 shadow-sm rounded-4 p-4 text-center" data-aos="zoom-in"
+                            data-aos-delay="100">
+                            <p class="text-muted mb-3">Yuk, login dulu buat bagikan pengalaman mendakimu.</p>
+                            <a href="{{ route('login') }}" class="btn btn-outline-success rounded-pill px-4 mx-auto"
+                                style="width: fit-content;">
+                                Login Sekarang
+                            </a>
+                        </div>
+                    @endauth
+
+                </div>
+            </div>
+
+        </div>
+    </section>
 
     {{-- GALERI MOMEN PENDAKI --}}
-    <section class="py-5 bg-white" data-aos="fade-up">
+    <section class="py-5 bg-white" data-aos="fade-in">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">Momen Para Pendaki</h2>
             </div>
             <div class="row g-3">
@@ -475,16 +531,17 @@
     </section>
 
     {{-- DROPDOWN JAWABAN PERTANYAAN --}}
-    <section class="py-5 bg-light" data-aos="fade-up">
+    <section class="py-5 bg-light" data-aos="fade-in">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5" data-aos="fade-up">
                 <h2 class="fw-bold">Pertanyaan yang Sering Diajukan</h2>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="accordion" id="faqAccordion">
                         @foreach ([['q' => 'Berapa lama minimal masa sewa alat?', 'a' => 'Minimal sewa adalah 1 hari (24 jam) untuk semua kategori alat.'], ['q' => 'Apakah ada deposit atau jaminan?', 'a' => 'Ya, sistem deposit akan dikembalikan penuh setelah alat kembali dalam kondisi baik.'], ['q' => 'Bagaimana jika alat rusak saat digunakan?', 'a' => 'Kerusakan wajar ditanggung kami. Kerusakan berat dikenakan biaya sesuai ketentuan.'], ['q' => 'Apakah bisa antar-jemput alat?', 'a' => 'Bisa, kami menyediakan layanan antar-jemput untuk area tertentu dengan biaya tambahan.']] as $i => $faq)
-                            <div class="accordion-item rounded-3 mb-2 border-0 shadow-sm">
+                            <div class="accordion-item rounded-3 mb-2 border-0 shadow-sm" data-aos="fade-up"
+                                data-aos-delay="{{ $i * 50 }}">
                                 <h2 class="accordion-header">
                                     <button class="accordion-button collapsed rounded-3" type="button"
                                         data-bs-toggle="collapse" data-bs-target="#faq{{ $i }}">
@@ -502,21 +559,6 @@
             </div>
         </div>
     </section>
-
-    {{-- KONTEN TANYA --}}
-    <section class="py-5 bg-white" data-aos="fade-up">
-        <div class="container">
-            <div class="rounded-4 p-5 text-center text-white position-relative"
-                style="background: linear-gradient(rgba(15,23,42,.75), rgba(27,94,32,.85)), url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1400&q=80'); background-size:cover; background-position:center;">
-                <h2 class="fw-bold mb-3">Siap Untuk Petualangan Berikutnya?</h2>
-                <p class="mb-4 opacity-90 col-md-7 mx-auto">Sewa alat pendakian terbaik sekarang juga dan wujudkan
-                    perjalanan ke puncak impianmu.</p>
-                <a href="#katalog" class="btn btn-warning btn-lg fw-bold rounded-pill px-4">Mulai Sewa Sekarang</a>
-            </div>
-        </div>
-    </section>
-
-
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>

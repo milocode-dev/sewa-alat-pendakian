@@ -86,4 +86,6 @@ class ItemController extends Controller
 
         return redirect()->route('admin.items.index')->with('success', 'Alat berhasil dihapus!');
     }
+
+    
 }
